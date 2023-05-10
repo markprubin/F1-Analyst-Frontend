@@ -127,7 +127,7 @@ export default function Nav() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Inbox", "Drivers", "Constructors", "Races"].map((text, index) => (
+          {["Inbox", "Drivers", "Constructors", "Drafts"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -176,7 +176,15 @@ export default function Nav() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          marginLeft: open ? drawerWidth : 0,
+          transition: "margin-left 0.2s",
+        }}
+      >
         <DrawerHeader />
       </Box>
     </Box>

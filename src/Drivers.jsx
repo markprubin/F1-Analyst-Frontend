@@ -1,28 +1,35 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Box } from "@mui/material";
 
 export function Drivers() {
-  return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia sx={{ height: 140 }} image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents
-          except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+  const [drivers, setDrivers] = useState([]);
+
+  useEffect(() => {
+    const fetchDrivers = async () => {
+      try {
+        const response = await axios.get("https://ergast.com/api/f1/2023/drivers.json");
+        setDrivers(response.data.MRData.DriverTable.Drivers);
+        console.log(response.data.MRData.DriverTable.Drivers);
+      } catch (error) {
+        console.error("Error fetching drivers:", error);
+      }
+    };
+
+    fetchDrivers();
+  }, []);
+
+  return drivers.map((driver) => (
+    <Box
+      sx={{
+        display: "flex",
+        marginLeft: 30,
+      }}
+    >
+      <div key={driver.driverId}>
+        <h2>{driver.givenName}</h2>
+      </div>
+    </Box>
+  ));
 }
