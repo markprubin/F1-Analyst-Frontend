@@ -28,7 +28,14 @@ export function Drivers() {
       }}
     >
       <div key={driver.driverId}>
-        <h2>{driver.givenName}</h2>
+        <h2>
+          {driver.givenName} {driver.familyName} <strong>({driver.code})</strong>
+        </h2>
+        Date of Birth: {driver.dateOfBirth}
+        <br />
+        Nationality: {driver.nationality}
+        <br />
+        <a href={driver.url}>More Info</a>
       </div>
     </Box>
   ));
