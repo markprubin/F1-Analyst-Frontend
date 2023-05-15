@@ -109,7 +109,7 @@ export default function Nav() {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
-              marginRight: 5,
+              marginRight: "36px",
               ...(open && { display: "none" }),
             }}
           >

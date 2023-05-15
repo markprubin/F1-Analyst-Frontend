@@ -1,6 +1,7 @@
 import { Home } from "./Home";
 import { Footer } from "./components/Footer";
 import Nav from "./components/Nav";
+import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { Drivers } from "./Drivers";
 import { Constructors } from "./Constructors";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {/* <Nav /> */}
+        <ResponsiveAppBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/drivers" element={<Drivers />} />
