@@ -2,36 +2,34 @@ import Chart from "chart.js/auto";
 import axios from "axios";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { Box } from "@mui/material";
 
 export function SeasonPointsChart() {
   const [driverStandings, setDriverStandings] = useState([]);
 
-  const handleDriverStandings = () => {
-    console.log("driverStandings");
-    axios.get("http://ergast.com/api/f1/2023/driverStandings.json").then((response) => {
-      console.log(response.data.MRdata.StandingsTable.StandingsLists[0].DriverStandings);
-      setDriverStandings(response.data.MRdata.StandingsTable.StandingsLists[0].DriverStandings);
-    });
-  };
+  // const handleDriverStandings = () => {
+  //   console.log("driverStandings");
+  //   axios.get("http://ergast.com/api/f1/2023/driverStandings.json").then((response) => {
+  //     console.log(response.data.MRdata.StandingsTable.StandingsLists[0].DriverStandings);
+  //     setDriverStandings(response.data.MRdata.StandingsTable.StandingsLists[0].DriverStandings);
+  //   });
+  // };
 
-  useEffect(handleDriverStandings, []);
+  // useEffect(handleDriverStandings, []);
 
-  // useEffect(() => {
-  //   const fetchDriverStandings = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://ergast.com/api/f1/2023/driverStandings.json"
-  //       );
-  //       const standings = response.data.MRData.StandingsTable.StandingsLists[0]
-  //         .DriverStandings;
-  //       setDriverStandings(standings);
-  //     } catch (error) {
-  //       console.error("Failed to fetch driver standings:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchDriverStandings = async () => {
+      try {
+        const response = await axios.get("http://ergast.com/api/f1/2023/driverStandings.json");
+        const standings = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+        setDriverStandings(standings);
+      } catch (error) {
+        console.error("Failed to fetch driver standings:", error);
+      }
+    };
 
-  //   fetchDriverStandings();
-  // }, []);
+    fetchDriverStandings();
+  }, []);
 
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
@@ -79,8 +77,16 @@ export function SeasonPointsChart() {
   }, [driverStandings]);
 
   return (
-    <div>
-      <canvas ref={chartContainerRef}></canvas>
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div>
+        <canvas ref={chartContainerRef} style={{ width: "100%", height: "100%" }}></canvas>
+      </div>
+    </Box>
   );
 }
