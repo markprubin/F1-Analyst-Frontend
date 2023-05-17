@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Paper } from "@mui/material";
+import { Button } from "@mui/material";
 
 import { SeasonPointsChart } from "./components/SeasonPointsChart";
 
@@ -10,7 +11,6 @@ export function Home() {
     <Box
       component="main"
       sx={{
-        backgroundColor: "lightgrey",
         height: "100vh",
         overflow: "auto",
         flexgrow: 1,
@@ -21,12 +21,15 @@ export function Home() {
       <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", mt: 4, mb: 4 }}>
         <h1>F1 Analyst App</h1>
         <Grid container spacing={2}>
-          <Grid xs={6}>
+          <Grid xs={8}>
             <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: "240" }}>
-              <h1>Grid 1</h1>
+              <h3>Welcome to the F1 Analyst App!</h3>
+              <Button href="https://www.formula1.com" color="error" variant="contained">
+                F1 Main Website
+              </Button>
             </Paper>
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={4}>
             <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: "240" }}>
               <h1>Grid 2</h1>
             </Paper>
