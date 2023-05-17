@@ -2,12 +2,13 @@ import { Box } from "@mui/material";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Paper } from "@mui/material";
-import Chart from "chart.js/auto";
+
+import { SeasonPointsChart } from "./components/SeasonPointsChart";
 
 export function Home() {
   return (
     <Box
-      // component="main"
+      component="main"
       sx={{
         backgroundColor: "lightgrey",
         height: "100vh",
@@ -32,7 +33,7 @@ export function Home() {
           </Grid>
           <Grid xs={12}>
             <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: "240" }}>
-              <h1>Season Points</h1>
+              <SeasonPointsChart />
             </Paper>
           </Grid>
         </Grid>
