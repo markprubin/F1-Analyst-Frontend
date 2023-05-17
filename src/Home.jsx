@@ -14,6 +14,7 @@ export function Home() {
         overflow: "auto",
         flexgrow: 1,
         maxWidth: "lg",
+        display: "flex",
       }}
     >
       <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", mt: 4, mb: 4 }}>
