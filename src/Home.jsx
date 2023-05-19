@@ -13,8 +13,9 @@ export function Home() {
       sx={{
         height: "100vh",
         overflow: "auto",
+        backgroundColor: "lightgrey",
         flexgrow: 1,
-        maxWidth: "lg",
+        width: "100vw",
         display: "flex",
       }}
     >
@@ -22,7 +23,7 @@ export function Home() {
         <h1>F1 Analyst App</h1>
         <Grid container spacing={2}>
           <Grid xs={8}>
-            <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: "240" }}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 240 }}>
               <h3>Welcome to the F1 Analyst App!</h3>
               <Button href="https://www.formula1.com" color="error" variant="contained">
                 F1 Main Website
@@ -30,12 +31,12 @@ export function Home() {
             </Paper>
           </Grid>
           <Grid xs={4}>
-            <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: "240" }}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 240 }}>
               <h1>Grid 2</h1>
             </Paper>
           </Grid>
           <Grid xs={12}>
-            <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: "240" }}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: "50%" }}>
               <SeasonPointsChart />
             </Paper>
           </Grid>

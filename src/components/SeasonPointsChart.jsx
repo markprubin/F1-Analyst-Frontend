@@ -7,29 +7,15 @@ import { Box } from "@mui/material";
 export function SeasonPointsChart() {
   const [driverStandings, setDriverStandings] = useState([]);
 
-  // const handleDriverStandings = () => {
-  //   console.log("driverStandings");
-  //   axios.get("http://ergast.com/api/f1/2023/driverStandings.json").then((response) => {
-  //     console.log(response.data.MRdata.StandingsTable.StandingsLists[0].DriverStandings);
-  //     setDriverStandings(response.data.MRdata.StandingsTable.StandingsLists[0].DriverStandings);
-  //   });
-  // };
+  const handleDriverStandings = () => {
+    console.log("driverStandings");
+    axios.get("http://ergast.com/api/f1/2023/driverStandings.json").then((response) => {
+      console.log(response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
+      setDriverStandings(response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
+    });
+  };
 
-  // useEffect(handleDriverStandings, []);
-
-  useEffect(() => {
-    const fetchDriverStandings = async () => {
-      try {
-        const response = await axios.get("http://ergast.com/api/f1/2023/driverStandings.json");
-        const standings = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-        setDriverStandings(standings);
-      } catch (error) {
-        console.error("Failed to fetch driver standings:", error);
-      }
-    };
-
-    fetchDriverStandings();
-  }, []);
+  useEffect(handleDriverStandings, []);
 
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
@@ -46,9 +32,9 @@ export function SeasonPointsChart() {
         {
           label: "Total Points",
           data: points,
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(0, 0, 0, 0.2)",
+          borderWidth: 2,
         },
       ],
     };
