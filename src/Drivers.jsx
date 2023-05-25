@@ -6,6 +6,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Unstable_Grid2";
 
 export function Drivers() {
   const [drivers, setDrivers] = useState([]);
@@ -29,7 +32,10 @@ export function Drivers() {
 
   return (
     <>
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ minWidth: 120, ml: 4, mt: 4, maxWidth: 400 }}>
+        <Typography variant="h5" sx={{ mb: 4 }}>
+          Year Selection:
+        </Typography>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
@@ -45,25 +51,28 @@ export function Drivers() {
           </Select>
         </FormControl>
       </Box>
-      {drivers.map((driver) => (
-        <Box
-          sx={{
-            display: "flex",
-            marginLeft: 30,
-          }}
-        >
-          <div key={driver.driverId}>
-            <h2>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          width: "100vw",
+        }}
+      >
+        {drivers.map((driver) => (
+          <Card key={driver.driverId} sx={{ maxWidth: 400, ml: 4, mt: 4 }}>
+            <Typography variant="h4">
               {driver.givenName} {driver.familyName} <strong>({driver.code})</strong>
-            </h2>
-            Date of Birth: {driver.dateOfBirth}
+            </Typography>
+            <Typography variant="h5">Date of Birth: {driver.dateOfBirth}</Typography>
+            <Typography variant="h6">Nationality: {driver.nationality}</Typography>
+            <Typography variant="h6">
+              <a href={driver.url}>More Info</a>
+            </Typography>
             <br />
-            Nationality: {driver.nationality}
-            <br />
-            <a href={driver.url}>More Info</a>
-          </div>
-        </Box>
-      ))}
+          </Card>
+        ))}
+      </Box>
     </>
   );
 }

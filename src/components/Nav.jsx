@@ -129,7 +129,7 @@ export default function Nav() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Inbox", "Drivers", "Constructors", "Drafts"].map((text, index) => (
+          {["Drivers", "Constructors"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
