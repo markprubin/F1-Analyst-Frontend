@@ -71,6 +71,7 @@ export function Drivers() {
                 <Typography variant="h6">
                   <a href={driver.url}>More Info</a>
                 </Typography>
+                <img src="https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages|pageterms&piprop=thumbnail&pithumbsize=500&titles=Albert_Einstein" />
                 <br />
               </Card>
             </Grid>

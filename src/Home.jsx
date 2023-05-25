@@ -36,12 +36,12 @@ export function Home() {
             </Paper>
           </Grid>
           <Grid xs={12}>
-            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: "50%" }}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column" }}>
               <SeasonPointsChart />
             </Paper>
           </Grid>
           <Grid xs={12}>
-            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: "50%" }}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column" }}>
               <ConstrPointsChart />
             </Paper>
           </Grid>
