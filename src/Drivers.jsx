@@ -33,6 +33,9 @@ export function Drivers() {
   return (
     <>
       <Box sx={{ minWidth: 120, ml: 4, mt: 4, maxWidth: 400 }}>
+        <Typography variant="h2" sx={{ display: "block", mb: 4 }}>
+          Driver List
+        </Typography>
         <Typography variant="h5" sx={{ mb: 4 }}>
           Year Selection:
         </Typography>
@@ -53,7 +56,6 @@ export function Drivers() {
       </Box>
       <Box
         sx={{
-          flexWrap: "wrap",
           width: "100vw",
         }}
       >

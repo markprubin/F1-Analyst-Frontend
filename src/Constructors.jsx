@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { ConstrPointsChart } from "./components/ConstrPointsChart";
 
 export function Constructors() {
   const [constructor, setConstructor] = useState([]);
@@ -19,13 +18,13 @@ export function Constructors() {
 
   return (
     <Box
+      component="main"
       sx={{
         display: "flex",
         marginLeft: 30,
         flexDirection: "column",
       }}
     >
-      <ConstrPointsChart />
       {constructor.map((constructor) => (
         <div key={constructor.constructorId}>
           <h3>{constructor.name}</h3>

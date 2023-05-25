@@ -5,6 +5,7 @@ import { Paper } from "@mui/material";
 import { Button } from "@mui/material";
 
 import { SeasonPointsChart } from "./components/SeasonPointsChart";
+import { ConstrPointsChart } from "./components/ConstrPointsChart";
 
 export function Home() {
   return (
@@ -13,15 +14,14 @@ export function Home() {
       sx={{
         height: "100vh",
         overflow: "auto",
-        backgroundColor: "lightgrey",
         flexgrow: 1,
         width: "100vw",
         display: "flex",
       }}
     >
-      <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", mt: 4, mb: 4 }}>
+      <Container maxWidth="xl" sx={{ display: "flex", flexDirection: "column", mt: 4, mb: 4 }}>
         <h1>F1 Analyst App</h1>
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
           <Grid xs={8}>
             <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 240 }}>
               <h3>Welcome to the F1 Analyst App!</h3>
@@ -38,6 +38,11 @@ export function Home() {
           <Grid xs={12}>
             <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: "50%" }}>
               <SeasonPointsChart />
+            </Paper>
+          </Grid>
+          <Grid xs={12}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: "50%" }}>
+              <ConstrPointsChart />
             </Paper>
           </Grid>
         </Grid>
