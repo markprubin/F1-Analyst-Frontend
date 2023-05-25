@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid";
 
 export function Drivers() {
   const [drivers, setDrivers] = useState([]);
@@ -53,25 +53,27 @@ export function Drivers() {
       </Box>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
           flexWrap: "wrap",
           width: "100vw",
         }}
       >
-        {drivers.map((driver) => (
-          <Card key={driver.driverId} sx={{ maxWidth: 400, ml: 4, mt: 4 }}>
-            <Typography variant="h4">
-              {driver.givenName} {driver.familyName} <strong>({driver.code})</strong>
-            </Typography>
-            <Typography variant="h5">Date of Birth: {driver.dateOfBirth}</Typography>
-            <Typography variant="h6">Nationality: {driver.nationality}</Typography>
-            <Typography variant="h6">
-              <a href={driver.url}>More Info</a>
-            </Typography>
-            <br />
-          </Card>
-        ))}
+        <Grid container spacing={4} sx={{ mt: 2, ml: 4 }}>
+          {drivers.map((driver) => (
+            <Grid item xs={12} sm={6} md={4} key={driver.driverId}>
+              <Card sx={{ maxWidth: 400 }}>
+                <Typography variant="h4">
+                  {driver.givenName} {driver.familyName} {driver.code ? <strong>({driver.code})</strong> : null}
+                </Typography>
+                <Typography variant="h5">Date of Birth: {driver.dateOfBirth}</Typography>
+                <Typography variant="h6">Nationality: {driver.nationality}</Typography>
+                <Typography variant="h6">
+                  <a href={driver.url}>More Info</a>
+                </Typography>
+                <br />
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </>
   );
