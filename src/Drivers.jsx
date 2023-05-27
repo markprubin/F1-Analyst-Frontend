@@ -20,8 +20,25 @@ export function Drivers() {
     const fetchDrivers = async () => {
       try {
         const response = await axios.get(`https://ergast.com/api/f1/${year}/drivers.json`);
-        setDrivers(response.data.MRData.DriverTable.Drivers);
-        console.log(response.data.MRData.DriverTable.Drivers);
+        const driversData = response.data.MRData.DriverTable.Drivers;
+        const driversWithImages = await Promise.all(
+          driversData.map(async (driver) => {
+            try {
+              const wikiResponse = await axios.get(
+                `https://en.wikipedia.org/w/api.php?action=query&titles=${driver.givenName}_${driver.familyName}&prop=pageimages&format=json&origin=*&pithumbsize=500`
+              );
+              const pages = wikiResponse.data.query.pages;
+              const pageId = Object.keys(pages)[0];
+              const imageInfo = pages[pageId].thumbnail;
+              const imageUrl = imageInfo ? imageInfo.source : "";
+              return { ...driver, imageUrl };
+            } catch (error) {
+              console.error(`Error fetching Wikipedia data for ${driver.givenName} ${driver.familyName}:`, error);
+              return driver;
+            }
+          })
+        );
+        setDrivers(driversWithImages);
       } catch (error) {
         console.error("Error fetching drivers:", error);
       }
@@ -49,7 +66,9 @@ export function Drivers() {
             onChange={(event) => setYear(event.target.value)}
           >
             {yearsList(1950, 2023, 1).map((year) => (
-              <MenuItem value={year}>{year}</MenuItem>
+              <MenuItem value={year} key={year}>
+                {year}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -71,8 +90,13 @@ export function Drivers() {
                 <Typography variant="h6">
                   <a href={driver.url}>More Info</a>
                 </Typography>
-                <img src="https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages|pageterms&piprop=thumbnail&pithumbsize=500&titles=Albert_Einstein" />
-                <br />
+                {driver.imageUrl && (
+                  <img
+                    src={driver.imageUrl}
+                    alt="Driver"
+                    style={{ width: "100%", height: "auto", marginTop: "10px" }}
+                  />
+                )}
               </Card>
             </Grid>
           ))}
