@@ -9,10 +9,11 @@ import Select from "@mui/material/Select";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 export function Drivers() {
   const [drivers, setDrivers] = useState([]);
-  const [year, setYear] = useState(2022);
+  const [year, setYear] = useState(2023);
   const yearsList = (start, stop, step) =>
     Array.from({ length: (stop - start) / step + 1 }, (value, index) => start + index * step);
 
@@ -81,7 +82,7 @@ export function Drivers() {
         <Grid container spacing={4} sx={{ mt: 2, ml: 4 }}>
           {drivers.map((driver) => (
             <Grid item xs={12} sm={6} md={4} key={driver.driverId}>
-              <Card sx={{ maxWidth: 400 }}>
+              <Paper elevation={6}>
                 <Typography variant="h4">
                   {driver.givenName} {driver.familyName} {driver.code ? <strong>({driver.code})</strong> : null}
                 </Typography>
@@ -91,13 +92,9 @@ export function Drivers() {
                   <a href={driver.url}>More Info</a>
                 </Typography>
                 {driver.imageUrl && (
-                  <img
-                    src={driver.imageUrl}
-                    alt="Driver"
-                    style={{ width: "100%", height: "auto", marginTop: "10px" }}
-                  />
+                  <img src={driver.imageUrl} alt="Driver" style={{ width: "50%", height: "50%", marginTop: "10px" }} />
                 )}
-              </Card>
+              </Paper>
             </Grid>
           ))}
         </Grid>
