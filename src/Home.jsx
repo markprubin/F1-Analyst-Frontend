@@ -3,6 +3,7 @@ import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Paper } from "@mui/material";
 import { Button } from "@mui/material";
+import { DriverDataGrid } from "./components/DriverDataGrid";
 
 import { SeasonPointsChart } from "./components/SeasonPointsChart";
 import { ConstrPointsChart } from "./components/ConstrPointsChart";
@@ -22,26 +23,23 @@ export function Home() {
       <Container maxWidth="xl" sx={{ display: "flex", flexDirection: "column", mt: 4, mb: 4 }}>
         <h1>F1 Analyst App</h1>
         <Grid container spacing={1}>
-          <Grid xs={8}>
-            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 240 }}>
-              <h3>Welcome to the F1 Analyst App!</h3>
-              <Button href="https://www.formula1.com" color="error" variant="contained">
-                F1 Main Website
-              </Button>
+          <Grid xs={3}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 480 }}>
+              <DriverDataGrid />
             </Paper>
           </Grid>
-          <Grid xs={4}>
-            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 240 }}>
-              <h1>Grid 2</h1>
-            </Paper>
-          </Grid>
-          <Grid xs={12}>
-            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+          <Grid xs={9}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 480 }}>
               <SeasonPointsChart />
             </Paper>
           </Grid>
-          <Grid xs={12}>
-            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+          <Grid xs={3}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 480 }}>
+              <h1>Constructor Data Grid</h1>
+            </Paper>
+          </Grid>
+          <Grid xs={9}>
+            <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 480 }}>
               <ConstrPointsChart />
             </Paper>
           </Grid>

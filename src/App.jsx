@@ -5,6 +5,7 @@ import { ResponsiveAppBar } from "./components/ResponsiveAppBar";
 import { Drivers } from "./Drivers";
 import { SeasonPointsChart } from "./components/SeasonPointsChart";
 import { Constructors } from "./Constructors";
+import { Circuits } from "./Circuits";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/drivers" element={<Drivers />} />
           <Route path="/constructors" element={<Constructors />} />
+          <Route path="/circuits" element={<Circuits />} />
         </Routes>
         <Footer />
       </BrowserRouter>

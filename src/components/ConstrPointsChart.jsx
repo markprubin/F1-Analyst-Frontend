@@ -77,7 +77,7 @@ export function ConstrPointsChart() {
       }}
     >
       <div>
-        <canvas ref={chartContainerRef} style={{ width: "100vw", height: "100%" }}></canvas>
+        <canvas ref={chartContainerRef} style={{ width: "100%", height: "100%" }}></canvas>
       </div>
     </Box>
   );
