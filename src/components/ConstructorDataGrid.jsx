@@ -10,11 +10,11 @@ const rows = [
 ];
 
 const columns = [
-  { field: "col1", headerName: "Driver", width: 150 },
+  { field: "col1", headerName: "Constructor", width: 150 },
   { field: "col2", headerName: "Points", width: 150 },
 ];
 
-export function DriverDataGrid() {
+export function ConstructorDataGrid() {
   return (
     <div>
       <DataGrid rows={rows} columns={columns} />

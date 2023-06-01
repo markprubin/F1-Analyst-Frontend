@@ -7,6 +7,7 @@ import { DriverDataGrid } from "./components/DriverDataGrid";
 
 import { SeasonPointsChart } from "./components/SeasonPointsChart";
 import { ConstrPointsChart } from "./components/ConstrPointsChart";
+import { ConstructorDataGrid } from "./components/ConstructorDataGrid";
 
 export function Home() {
   return (
@@ -35,7 +36,7 @@ export function Home() {
           </Grid>
           <Grid xs={3}>
             <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 480 }}>
-              <h1>Constructor Data Grid</h1>
+              <ConstructorDataGrid />
             </Paper>
           </Grid>
           <Grid xs={9}>

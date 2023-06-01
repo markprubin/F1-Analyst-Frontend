@@ -67,7 +67,7 @@ export function SeasonPointsChart() {
       sx={{
         display: "flex",
         justifyContent: "center",
-        height: 300,
+        height: 600,
       }}
     >
       <div>
