@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const pages = ["Drivers", "Constructors", "Circuits"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -55,7 +55,7 @@ export function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            HOME
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -115,16 +115,24 @@ export function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link key={page} to={`/${page}`} sx={{ my: 2, color: "white", display: "block" }}>
+              <NavLink
+                className={(isActive) => "nav-link" + (!isActive ? " unselected" : "")}
+                key={page}
+                to={`/${page}`}
+                style={({ isActive }) => ({
+                  color: isActive ? "white" : "black",
+                  padding: "16px",
+                })}
+              >
                 {page}
-              </Link>
+              </NavLink>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
