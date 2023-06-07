@@ -29,13 +29,7 @@ export function DriverDataGrid() {
 
   return (
     <div>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        sx={{ overflowY: "scroll", height: "450px" }}
-        hideFooter
-        disableSelectionOnClick
-      />
+      <DataGrid rows={rows} columns={columns} sx={{ maxHeight: "450px" }} hideFooter />
     </div>
   );
 }
