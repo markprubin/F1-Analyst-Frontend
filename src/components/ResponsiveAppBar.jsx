@@ -10,11 +10,12 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports";
+
 import { NavLink } from "react-router-dom";
 
 const pages = ["Drivers", "Constructors", "Circuits"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Logout"];
 
 export function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,22 +37,22 @@ export function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: "white" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <SportsMotorsportsIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "red" }} />
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
+              fontFamily: "inherit",
+              fontWeight: 1000,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "black",
               textDecoration: "none",
             }}
           >
@@ -94,7 +95,7 @@ export function ResponsiveAppBar() {
               ))} */}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <SportsMotorsportsIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1, color: "red" }} />
           <Typography
             variant="h5"
             noWrap

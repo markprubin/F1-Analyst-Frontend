@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { Container } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid";
 import { Paper } from "@mui/material";
-import { Button } from "@mui/material";
+
 import { DriverDataGrid } from "./components/DriverDataGrid";
 
 import { SeasonPointsChart } from "./components/SeasonPointsChart";
@@ -22,7 +22,7 @@ export function Home() {
       }}
     >
       <Container maxWidth="xl" sx={{ display: "flex", flexDirection: "column", mt: 4, mb: 4 }}>
-        <h1>F1 Analyst App</h1>
+        <h1 style={{ textAlign: "center" }}>Welcome to the F1 Analyst App</h1>
         <Grid container spacing={1}>
           <Grid xs={3}>
             <Paper elevation={3} sx={{ p: 2, display: "flex", flexDirection: "column", height: 480 }}>
