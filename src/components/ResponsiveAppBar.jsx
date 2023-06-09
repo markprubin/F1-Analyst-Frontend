@@ -121,7 +121,7 @@ export function ResponsiveAppBar() {
                 key={page}
                 to={`/${page}`}
                 style={({ isActive }) => ({
-                  color: isActive ? "white" : "black",
+                  color: isActive ? "red" : "black",
                   padding: "16px",
                 })}
               >
