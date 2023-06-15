@@ -67,12 +67,12 @@ export function Drivers() {
           Year Selection:
         </Typography>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Year</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={year}
-            label="Age"
+            label="year"
             onChange={(event) => setYear(event.target.value)}
           >
             {yearsList(1950, 2023, 1).map((year) => (
