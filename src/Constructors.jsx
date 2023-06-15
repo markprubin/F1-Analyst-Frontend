@@ -7,15 +7,8 @@ import { getCachedData, getFreshData } from "./utils/request";
 
 export function Constructors() {
   const [constructor, setConstructor] = useState([]);
-  const url = "https://ergast.com/api/f1/2002/constructors.json";
-
-  // const handleConstructor = () => {
-  //   console.log("handleConstructor");
-  //   axios.get("https://ergast.com/api/f1/2008/constructors.json").then((response) => {
-  //     console.log(response.data.MRData.ConstructorTable.Constructors);
-  //     setConstructor(response.data.MRData.ConstructorTable.Constructors);
-  //   });
-  // };
+  const [year, setYear] = useState(2023);
+  const url = `https://ergast.com/api/f1/${year}/constructors.json`;
 
   useEffect(() => {
     const cachedConstructors = getCachedData(url);
@@ -26,7 +19,7 @@ export function Constructors() {
         setConstructor(response.data.MRData.ConstructorTable.Constructors);
       });
     }
-  }, []);
+  }, [year]);
   console.log(constructor);
   return (
     <Box

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
@@ -21,26 +20,35 @@ export function Drivers() {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const response = await axios.get(`https://ergast.com/api/f1/${year}/drivers.json`);
-        const driversData = response.data.MRData.DriverTable.Drivers;
-        const driversWithImages = await Promise.all(
-          driversData.map(async (driver) => {
-            try {
-              const wikiResponse = await axios.get(
-                `https://en.wikipedia.org/w/api.php?action=query&titles=${driver.givenName}_${driver.familyName}&prop=pageimages&format=json&origin=*&pithumbsize=500`
-              );
-              const pages = wikiResponse.data.query.pages;
-              const pageId = Object.keys(pages)[0];
-              const imageInfo = pages[pageId].thumbnail;
-              const imageUrl = imageInfo ? imageInfo.source : "";
-              return { ...driver, imageUrl };
-            } catch (error) {
-              console.error(`Error fetching Wikipedia data for ${driver.givenName} ${driver.familyName}:`, error);
-              return driver;
-            }
-          })
-        );
-        setDrivers(driversWithImages);
+        const cacheKey = `drivers-${year}`;
+        const cachedData = readFromCache(cacheKey);
+
+        if (cachedData) {
+          setDrivers(cachedData);
+        } else {
+          const response = await axios.get(`https://ergast.com/api/f1/${year}/drivers.json`);
+          const driversData = response.data.MRData.DriverTable.Drivers;
+          const driversWithImages = await Promise.all(
+            driversData.map(async (driver) => {
+              try {
+                const wikiResponse = await axios.get(
+                  `https://en.wikipedia.org/w/api.php?action=query&titles=${driver.givenName}_${driver.familyName}&prop=pageimages&format=json&origin=*&pithumbsize=500`
+                );
+                const pages = wikiResponse.data.query.pages;
+                const pageId = Object.keys(pages)[0];
+                const imageInfo = pages[pageId].thumbnail;
+                const imageUrl = imageInfo ? imageInfo.source : "";
+                return { ...driver, imageUrl };
+              } catch (error) {
+                console.error(`Error fetching Wikipedia data for ${driver.givenName} ${driver.familyName}:`, error);
+                return driver;
+              }
+            })
+          );
+
+          setDrivers(driversWithImages);
+          writeToCache(cacheKey, driversWithImages);
+        }
       } catch (error) {
         console.error("Error fetching drivers:", error);
       }
