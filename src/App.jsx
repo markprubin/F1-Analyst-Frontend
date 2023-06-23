@@ -17,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/drivers" element={<Drivers />} />
-          <Route path="/constructors" element={<Constructors />} />
           <Route path="/circuits" element={<Circuits />} />
+          <Route path="/constructors" element={<Constructors />} />
         </Routes>
         <Footer />
       </BrowserRouter>

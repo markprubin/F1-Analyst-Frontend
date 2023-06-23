@@ -7,8 +7,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import { Typography } from "@mui/material";
 
-import axios from "axios";
-import { readFromCache, writeToCache } from "./utils/cache";
 import { getCachedData, getFreshData } from "./utils/request";
 
 export function Constructors() {
@@ -24,11 +22,11 @@ export function Constructors() {
       setConstructor(cachedConstructors.MRData.ConstructorTable.Constructors);
     } else {
       getFreshData(url, true).then((response) => {
-        setConstructor(response.data.MRData.ConstructorTable.Constructors);
+        setConstructor(response.MRData.ConstructorTable.Constructors);
       });
     }
   }, [year]);
-  console.log(constructor);
+
   return (
     <Box
       component="main"
@@ -36,7 +34,6 @@ export function Constructors() {
         display: "flex",
         width: "100vw",
         flexDirection: "column",
-        height: "100vh",
       }}
     >
       <Typography variant="h2" sx={{ display: "block", mb: 4 }}>

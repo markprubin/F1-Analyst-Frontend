@@ -6,8 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-
 import axios from "axios";
+import CircuitMap from "./components/CircuitMap";
 
 export function Circuits() {
   const [circuit, setCircuit] = useState([]);
@@ -32,6 +32,7 @@ export function Circuits() {
         display: "flex",
         width: "100vw",
         flexDirection: "column",
+        height: "100vh",
       }}
     >
       <Typography variant="h2" sx={{ display: "block", mb: 4 }}>
@@ -56,6 +57,7 @@ export function Circuits() {
           ))}
         </Select>
       </FormControl>
+      <CircuitMap />
     </Box>
   );
 }
