@@ -70,8 +70,8 @@ export function SeasonPointsChart() {
         height: 600,
       }}
     >
-      <div>
-        <canvas ref={chartContainerRef} style={{ width: "100%", height: "100%" }}></canvas>
+      <div style={{ width: "100%", height: "100%" }}>
+        <canvas ref={chartContainerRef}></canvas>
       </div>
     </Box>
   );
