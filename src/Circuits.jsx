@@ -8,6 +8,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import CircuitMap from "./components/CircuitMap";
+import { readFromCache, writeToCache } from "./utils/cache";
 
 export function Circuits() {
   const [circuit, setCircuit] = useState([]);
@@ -16,14 +17,22 @@ export function Circuits() {
     Array.from({ length: (stop - start) / step + 1 }, (value, index) => start + index * step);
 
   const handleCircuitInfo = () => {
-    console.log("circuitInfo");
-    axios.get(`http://ergast.com/api/f1/${year}/circuits.json`).then((response) => {
-      console.log(response.data.MRData.CircuitTable.Circuits);
-      setCircuit(response.data.MRData.CircuitTable.Circuits);
-    });
+    const cacheKey = `circuits-${year}`;
+    const cachedData = readFromCache(cacheKey);
+
+    if (cachedData) {
+      setCircuit(cachedData);
+    } else {
+      console.log("circuitInfo");
+      axios.get(`http://ergast.com/api/f1/${year}/circuits.json`).then((response) => {
+        console.log(response.data.MRData.CircuitTable.Circuits);
+        setCircuit(response.data.MRData.CircuitTable.Circuits);
+        writeToCache(cacheKey, response.data.MRData.CircuitTable.Circuits);
+      });
+    }
   };
 
-  useEffect(handleCircuitInfo, []);
+  useEffect(handleCircuitInfo, [year]);
 
   return (
     <Box
@@ -33,6 +42,7 @@ export function Circuits() {
         width: "100vw",
         flexDirection: "column",
         height: "100vh",
+        padding: "20px 50px 20px",
       }}
     >
       <Typography variant="h2" sx={{ display: "block", mb: 4 }}>
@@ -57,7 +67,7 @@ export function Circuits() {
           ))}
         </Select>
       </FormControl>
-      <CircuitMap />
+      <CircuitMap circuit={circuit} />
     </Box>
   );
 }
