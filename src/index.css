@@ -3,7 +3,13 @@ html {
 }
 
 
-
+.marker-image {
+  width: 35px;
+  height: 35px;
+}
+.marker-button {
+  background-color: transparent;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
