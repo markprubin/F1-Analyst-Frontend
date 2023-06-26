@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -14,8 +14,9 @@ export default function CircuitMap({ circuit }) {
 
   const [selectedCircuit, setSelectedCircuit] = useState(null);
 
-  const handleMarkerClick = (circuit) => {
-    setSelectedCircuit(circuit);
+  const handleMarkerClick = (clickedCircuit) => {
+    console.log(clickedCircuit);
+    setSelectedCircuit(clickedCircuit);
   };
 
   const handlePopupClose = () => {
@@ -47,7 +48,12 @@ export default function CircuitMap({ circuit }) {
             latitude={Number(circuit.Location.lat)}
             longitude={Number(circuit.Location.long)}
           >
-            <button className="marker-button" onClick={() => handleMarkerClick(circuit)}>
+            <button
+              className="marker-button"
+              onClick={() => {
+                handleMarkerClick(circuit);
+              }}
+            >
               <img className="marker-image" src="./src/assets/race-track-red.png" />
             </button>
           </Marker>
@@ -57,10 +63,13 @@ export default function CircuitMap({ circuit }) {
           <Popup
             latitude={Number(selectedCircuit.Location.lat)}
             longitude={Number(selectedCircuit.Location.long)}
+            closeButton={true}
             onClose={handlePopupClose}
           >
             <h3>{selectedCircuit.circuitName}</h3>
-            <p>{selectedCircuit.Location.country}</p>
+            <p>
+              {selectedCircuit.Location.locality}, {selectedCircuit.Location.country}
+            </p>
           </Popup>
         )}
       </Map>
