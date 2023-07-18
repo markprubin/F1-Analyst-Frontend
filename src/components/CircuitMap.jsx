@@ -54,7 +54,7 @@ export default function CircuitMap({ circuit }) {
                 handleMarkerClick(circuit);
               }}
             >
-              <img className="marker-image" src="src/assets/race-track-red.png" />
+              <img className="marker-image" src="/race-track-red.png" />
             </button>
           </Marker>
         ))}
